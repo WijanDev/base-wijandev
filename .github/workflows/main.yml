@@ -1,0 +1,29 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CD
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "production" branch
+  pull_request:
+    branches: [ 'production', 'staging', 'development' ]
+    types: [ 'closed']
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  deploy:
+    name: Deploy to Clodflare
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set Git config
+      run: |
+          git config --local user.email "me@wijan.dev"
+          git config --local user.name "WijanDev"
+
+    - name: Merge master back to dev
+      run: |
+          git fetch --unshallow
+          git checkout deploy/${GITHUB_HEAD_REF}
+          git pull
+          git merge --no-ff ${GITHUB_HEAD_REF} -m "Deploying"
+          git push
