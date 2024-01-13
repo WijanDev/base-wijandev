@@ -25,4 +25,7 @@ jobs:
           node-version: '20.x'
       - run: npm ci
       - run: npm run build
+      - name: 'Create env file'
+        run: |
+          echo "${{ secrets.DOTENV }}" > .env
       - run: npm test
