@@ -12,7 +12,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   deploy:
-    name: Deploy to Clodflare
+    name: Deploy to Cloudflare
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -24,7 +24,7 @@ jobs:
     - name: Merge master back to dev
       run: |
           git fetch --unshallow
-          git checkout deploy/${GITHUB_HEAD_REF}
+          git checkout deploy/${GITHUB_BASE_REF}
           git pull
-          git merge --no-ff ${GITHUB_HEAD_REF} -m "Deploying"
+          git merge --no-ff ${GITHUB_BASE_REF} -m "Deploying"
           git push
