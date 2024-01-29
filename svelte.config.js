@@ -8,6 +8,7 @@ const json = readFileSync(file, 'utf8');
 const pkg = JSON.parse(json);
 
 export default {
+	preprocess: [vitePreprocess()],
 	kit: {
 		version: {
 			name: pkg.version

@@ -1,0 +1,67 @@
+{
+    "_auth": {
+        "logout": "Logout"
+    },
+    "_forms": {
+        "save_changes": "Save changes"
+    },
+    "_menus": {
+        "sidebar": {
+            "_account": {
+                "account": "Account",
+                "profile": "Profile",
+                "settings": "Settings"
+            },
+            "_application": {
+                "application": "Application",
+                "menus": "Menus",
+                "settings": "Settings",
+                "_internationalization": {
+                    "internationalization": "Internationalitzation",
+                    "languages": "Languages",
+                    "translations": "Translations"
+                }
+            },
+            "_blog": {
+                "blog": "Blog",
+                "categories": "Categories",
+                "posts": "Posts",
+                "tags": "Tags"
+            },
+            "_tools": {
+                "tools": "Tools",
+                "credit_simulator": "Credit simulator"
+            },
+            "dashboard": "Dashboard",
+            "pages": "Pages"
+        }
+    },
+    "account": {
+        "settings": {
+            "title": "Account settings",
+            "select_language": "Select language",
+            "sidebar": "Sidebar",
+            "sidebar_closed": "Sidebar closed"
+        }
+    },
+    "blog": {
+        "categories": {
+            "title": "Posts categories"
+        },
+        "posts": {
+            "title": "Posts"
+        },
+        "tags": {
+            "title": "Tags"
+        }
+    },
+    "dashboard": {
+        "content": "Welcome {{username}}"
+    },
+    "languages": {
+        "title": "Languages"
+    },
+    "pages": {
+        "title": "Pages"
+    }
+}

@@ -1,0 +1,67 @@
+{
+    "_auth": {
+        "logout": "Tancar sessió"
+    },
+    "_forms": {
+        "save_changes": "Guardar canvis"
+    },
+    "_menus": {
+        "sidebar": {
+            "_account": {
+                "account": "Compte",
+                "profile": "Perfil",
+                "settings": "Configuració"
+            },
+            "_application": {
+                "application": "Aplicació",
+                "menus": "Menús",
+                "settings": "Configuració",
+                "_internationalization": {
+                    "internationalization": "Internacionalització",
+                    "languages": "Llengües",
+                    "translations": "Traduccions"
+                }
+            },
+            "_blog": {
+                "blog": "Bloc",
+                "categories": "Categories",
+                "posts": "Entrades",
+                "tags": "Etiquetes"
+            },
+            "_tools": {
+                "tools": "Eines",
+                "credit_simulator": "Simul·lador de crèdit"
+            },
+            "dashboard": "Panell principal",
+            "pages": "Pàgines"
+        }
+    },
+    "account": {
+        "settings": {
+            "title": "Configuració del compte",
+            "select_language": "Selecciona la llengua que vulguis",
+            "sidebar": "Menú lateral",
+            "sidebar_closed": "Menú lateral tancat"
+        }
+    },
+    "blog": {
+        "categories": {
+            "title": "Categories d'entrades"
+        },
+        "posts": {
+            "title": "Entrades"
+        },
+        "tags": {
+            "title": "Etiquetes"
+        }
+    },
+    "dashboard": {
+        "content": "Benvingut {{username}}"
+    },
+    "languages": {
+        "title": "Llengües"
+    },
+    "pages": {
+        "title": "Pàgines"
+    }
+}
