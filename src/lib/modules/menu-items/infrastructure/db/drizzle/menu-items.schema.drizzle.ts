@@ -1,6 +1,6 @@
 import { pgTable, text, timestamp, type AnyPgColumn } from 'drizzle-orm/pg-core';
 import { createId } from '@paralleldrive/cuid2';
-import { menuGroups, type MenuGroup } from '../../../../../modules/menu-groups/infrastructure/db/drizzle/menu-groups.schema.drizzle';
+import { menus, type Menu } from '../../../../../modules/menus/infrastructure/db/drizzle/menus.schema.drizzle';
 import { translationKeys, type TranslationKey } from '../../../../../modules/translation-keys/infrastructure/db/drizzle/translation-keys.schema.drizzle';
 import { relations, type InferSelectModel } from 'drizzle-orm';
 
@@ -9,17 +9,18 @@ export const menuItems = pgTable('menu_items', {
     created: timestamp('created', { withTimezone: true }).notNull().defaultNow(),
     updated: timestamp('updated', { withTimezone: true }),
     deleted: timestamp('deleted', { withTimezone: true }),
-    menuGroupId: text('menu_group_id').notNull().references(() => menuGroups.id, { onDelete: 'cascade' }),
-    parentId: text('parent_id').references((): AnyPgColumn => menuItems.id, { onDelete: 'set null' }),
+    name: text('name'),
     icons: text('icons').array(),
+    menuId: text('menu_id').references(() => menus.id, { onDelete: 'set null' }),
+    parentId: text('parent_id').references((): AnyPgColumn => menuItems.id, { onDelete: 'set null' }),
     textTranslationKeyId: text('text_translation_key_id').references(() => translationKeys.id, { onDelete: 'set null' }),
     linkTranslationKeyId: text('link_translation_key_id').references(() => translationKeys.id, { onDelete: 'set null' })
 });
 
 export const menuItemsRelations = relations(menuItems, ({ one, many }) => ({
-    group: one(menuGroups, {
-        fields: [menuItems.menuGroupId],
-        references: [menuGroups.id]
+    menu: one(menus, {
+        fields: [menuItems.menuId],
+        references: [menus.id]
     }),
 
     childs: many(menuItems),
@@ -40,9 +41,9 @@ export const menuItemsRelations = relations(menuItems, ({ one, many }) => ({
 }));
 
 export type MenuItem = InferSelectModel<typeof menuItems> & {
-    group: MenuGroup,
+    menu: Menu|null,
     childs: MenuItem[],
-    parent: MenuItem,
-    linkTranslation: TranslationKey,
-    textTranslation: TranslationKey
+    parent: MenuItem|null,
+    linkTranslation: TranslationKey|null,
+    textTranslation: TranslationKey|null
 }

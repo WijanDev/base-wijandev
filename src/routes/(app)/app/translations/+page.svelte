@@ -54,8 +54,6 @@
 
 	translationsTree = translationsTree.filter((translationGroup) => !translationGroup.parentId);
 
-	const translations = {};
-
 	interface Foo {
 		[key: string]: string|Foo;
 	}
@@ -75,8 +73,6 @@
 			})
 		return jsonValue;
 	}
-
-	
 
 	const translationKeyHasTranslations = (translationKey: TranslationKey): boolean => {
 		return translationKey.translations.some(translation => translation.languageId == $userSettings.languageId);
@@ -117,6 +113,8 @@
 			value
 		};
 	}
+
+	const translations = translationTreeToJson(translationsTree);
 
 </script>
 

@@ -2,8 +2,9 @@ import { drizzle } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'
 import { PUBLIC_SUPABASE_CONNECTION_STRING } from '$env/static/public'
 import * as languages from '../../../../modules/languages/infrastructure/db/drizzle/languages.schema.drizzle'
-import * as menuItems from '../../../../modules/menu-items/infrastructure/db/drizzle/menu-items.schema.drizzle'
 import * as menuGroups from '../../../../modules/menu-groups/infrastructure/db/drizzle/menu-groups.schema.drizzle'
+import * as menus from '../../../../modules/menus/infrastructure/db/drizzle/menus.schema.drizzle'
+import * as menuItems from '../../../../modules/menu-items/infrastructure/db/drizzle/menu-items.schema.drizzle'
 import * as pages from '../../../../modules/pages/infrastructure/db/drizzle/pages.schema.drizzle'
 import * as translationGroups from '../../../../modules/translation-groups/infrastructure/db/drizzle/translation-groups.schema.drizzle'
 import * as translationKeys from '../../../../modules/translation-keys/infrastructure/db/drizzle/translation-keys.schema.drizzle'
@@ -16,8 +17,9 @@ const client = postgres(PUBLIC_SUPABASE_CONNECTION_STRING, { prepare: false })
 export const db = drizzle(client, {
     schema: {
         ...languages,
-        ...menuItems,
         ...menuGroups,
+        ...menus,
+        ...menuItems,
         ...pages,
         ...translationGroups,
         ...translationKeys,

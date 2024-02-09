@@ -31,8 +31,8 @@ export const load = async ({ parent, locals, url }) => {
 
     const parentData = await parent();
 
-    const initLocale = parentData.languages.find(language => language.id == settings!.languageId)?.iso3 ?? 'en'; // get from cookie, user session, ...
-    console.log(initLocale)
+    const initLocale = parentData.languages.find(language => language.id == settings!.languageId)?.iso3 ?? 'eng'; // get from cookie, user session, ...
+    
     await loadTranslations(initLocale); // keep this just before the `return`
     return {
         userSettings: settings,
